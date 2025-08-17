@@ -59,6 +59,8 @@
 
 3. Press and hold the hotkey combination `Option + Shift-Left` (or `Alt + Shift-Left` on Windows/Linux) to start recording your voice.
 
+   > You can configure this hotkey combination. See the [Configure](#configure) section below for details.
+
 4. Release the hotkey to transcribe your speech and automatically copy the text to your clipboard.
 
 ### Stopping the Application
