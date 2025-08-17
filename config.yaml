@@ -3,9 +3,6 @@ audio:
   audio_file: output.wav
 
 hotkey:
-  combination:
-    - alt
-    - shift_l
   debounce_time_ms: 1000  # milliseconds
 
 whisper:

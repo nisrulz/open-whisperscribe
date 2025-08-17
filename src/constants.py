@@ -2,6 +2,7 @@ import sounddevice as sd
 import logging
 from pynput import keyboard
 from src.config_loader import load_config
+from src.hotkey_combination import HOTKEY_COMBINATION
 
 config = load_config()
 
@@ -17,7 +18,7 @@ CHANNELS = device_info['max_input_channels']
 DEVICE_INDEX = default_device
 SAMPLE_RATE = config["audio"]["sample_rate"]
 AUDIO_FILE = config["audio"]["audio_file"]
-COMBINATION = {getattr(keyboard.Key, k) for k in config["hotkey"]["combination"]}
+COMBINATION = HOTKEY_COMBINATION
 LOG_FILE = config["logging"]["file"]
 LOG_LEVEL = getattr(logging, config["logging"]["level"])
 MODEL_NAME = config["whisper"]["model"]
