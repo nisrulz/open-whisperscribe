@@ -51,11 +51,15 @@
    ./run.sh
    ```
 
-   > **Note**: The app runs in the background, so you are free to close the terminal window if you want to.
+   > **Note**:
+   > The app runs in the background, so you are free to close the terminal window if you want to.
+   > When you run this script it will first stop all running instances of Open WhisperScribe and then start a fresh new instance.
 
-2. Press and hold the hotkey combination `Option + Shift-Left` (or `Alt + Shift-Left` on Windows/Linux) to start recording your voice.
+2. Place your cursor inside the application or text field where you want the transcribed text to appear.
 
-3. Release the hotkey to transcribe your speech and automatically copy the text to your clipboard.
+3. Press and hold the hotkey combination `Option + Shift-Left` (or `Alt + Shift-Left` on Windows/Linux) to start recording your voice.
+
+4. Release the hotkey to transcribe your speech and automatically copy the text to your clipboard.
 
 ### Stopping the Application
 
@@ -63,6 +67,37 @@ To stop the application, run:
 
 ```bash
 ./stop.sh
+```
+
+### Configure
+
+You can customize the application by modifying the `config.yaml` file located in the root directory of the project. Below are some common configurations you can change:
+
+1. **Audio Settings**:
+
+   - `sample_rate`: Adjust the audio sample rate (e.g., `16000` for 16kHz).
+   - `audio_file`: Specify the name of the file where recorded audio will be saved.
+
+2. **Logging**:
+
+   - `file`: Set the path for the log file (e.g., `logs.txt`).
+   - `level`: Change the logging level (e.g., `ERROR`, `INFO`, `DEBUG`).
+
+3. **Hotkey Combination**:
+
+   - The hotkey combination is defined in `src/hotkey_combination.py` for better usability and autocompletion support inside the code editor.
+   - To change the hotkey, open `src/hotkey_combination.py` and modify the `HOTKEY_COMBINATION` variable. For example:
+
+     ```python
+     HOTKEY_COMBINATION = {keyboard.Key.ctrl, keyboard.Key.space}
+     ```
+
+   - Use `keyboard.Key` and then type `.` for autocompletion and to avoid errors.
+
+After making changes, restart the application for the updates to take effect, by running
+
+```bash
+./run.sh
 ```
 
 ## License
