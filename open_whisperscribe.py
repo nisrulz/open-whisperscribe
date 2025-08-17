@@ -1,7 +1,5 @@
 from pynput import keyboard
 import atexit
-import logging
-import traceback
 from src.hotkey_handler import on_press, on_release
 from src.audio_recorder import get_stream, reset_stream, set_is_recording
 from src.constants import COMBINATION
@@ -17,7 +15,7 @@ def cleanup():
         set_is_recording(False)
         print("Cleanup complete.")
     except Exception as e:
-        logging.error("Cleanup error:\n%s", traceback.format_exc())
+        print("Cleanup error.")
 
 atexit.register(cleanup)
 
@@ -27,7 +25,7 @@ def main():
         with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
             listener.join()
     except Exception as e:
-        logging.error("Main loop error:\n%s", traceback.format_exc())
+        print("Main loop error.")
     finally:
         cleanup()
 

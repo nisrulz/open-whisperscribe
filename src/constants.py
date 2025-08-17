@@ -1,5 +1,4 @@
 import sounddevice as sd
-import logging
 from pynput import keyboard
 from src.config_loader import load_config
 from src.hotkey_combination import HOTKEY_COMBINATION
@@ -19,8 +18,6 @@ DEVICE_INDEX = default_device
 SAMPLE_RATE = config["audio"]["sample_rate"]
 AUDIO_FILE = config["audio"]["audio_file"]
 COMBINATION = HOTKEY_COMBINATION
-LOG_FILE = config["logging"]["file"]
-LOG_LEVEL = getattr(logging, config["logging"]["level"])
 MODEL_NAME = config["whisper"]["model"]
 DEBOUNCE_TIME_MS = config["hotkey"]["debounce_time_ms"]
 DEBOUNCE_TIME = DEBOUNCE_TIME_MS / 1000.0

@@ -1,7 +1,5 @@
 from pynput import keyboard
 import threading
-import logging
-import traceback
 from src.constants import COMBINATION, DEBOUNCE_TIME
 from src.audio_recorder import start_recording, stop_recording_and_save, get_is_recording
 from src.transcriber import transcribe_with_whisper
@@ -17,7 +15,7 @@ def on_press(key):
             if not get_is_recording():
                 start_recording()
     except Exception as e:
-        logging.error("Error in on_press:\n%s", traceback.format_exc())
+        print("Error in on_press.")
 
 def on_release(key):
     global transcription_triggered
@@ -36,5 +34,5 @@ def on_release(key):
                     transcription_triggered = False
                 threading.Timer(DEBOUNCE_TIME, reset_flag).start()
     except Exception as e:
-        logging.error("Error in on_release:\n%s", traceback.format_exc())
+        print("Error in on_release.")
 

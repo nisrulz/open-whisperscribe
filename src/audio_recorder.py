@@ -1,8 +1,6 @@
 import sounddevice as sd
 import numpy as np
 import scipy.io.wavfile
-import logging
-import traceback
 from src.constants import SAMPLE_RATE, CHANNELS, DEVICE_INDEX, AUDIO_FILE
 
 recorded_frames = []
@@ -33,7 +31,7 @@ def start_recording():
 
         def callback(indata, frames, time_info, status):
             if status:
-                logging.warning(f"Recording status: {status}")
+                print(f"Warning: Recording status: {status}")
             try:
                 if indata.shape[1] > 1:
                     mono_data = indata.mean(axis=1, keepdims=True).astype(indata.dtype)
@@ -41,7 +39,7 @@ def start_recording():
                 else:
                     recorded_frames.append(indata.copy())
             except Exception as e:
-                logging.error("Error in audio callback:\n%s", traceback.format_exc())
+                print("Error in audio callback.")
 
         stream = sd.InputStream(
             samplerate=SAMPLE_RATE,
@@ -53,7 +51,7 @@ def start_recording():
         stream.start()
         print("Recording... (Hold hotkey)")
     except Exception as e:
-        logging.error("Failed to start recording:\n%s", traceback.format_exc())
+        print("Failed to start recording.")
         is_recording = False
 
 def stop_recording_and_save():
@@ -74,7 +72,7 @@ def stop_recording_and_save():
         else:
             print("No audio captured.")
     except Exception as e:
-        logging.error("Failed to stop recording and save:\n%s", traceback.format_exc())
+        print("Failed to stop recording and save.")
         
         
 def get_is_recording():

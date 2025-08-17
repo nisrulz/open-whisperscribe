@@ -80,10 +80,10 @@ You can customize the application by modifying the `config.yaml` file located in
    - `sample_rate`: Adjust the audio sample rate (e.g., `16000` for 16kHz).
    - `audio_file`: Specify the name of the file where recorded audio will be saved.
 
-2. **Logging**:
+2. **Logs**:
 
-   - `file`: Set the path for the log file (e.g., `logs.txt`).
-   - `level`: Change the logging level (e.g., `ERROR`, `INFO`, `DEBUG`).
+   - Logs are written to the `nohup.out` file by default when the application is run in the background using `./run.sh`.
+     You can check this file for debugging or runtime information.
 
 3. **Hotkey Combination**:
 
