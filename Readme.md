@@ -26,6 +26,7 @@
 
 - Python 3.8 or higher installed on your system.
 - `pip` package manager.
+- Tested on macOS, but it should also work on Windows and Linux since it is written in Python.
 
 ### Setup
 
@@ -52,7 +53,7 @@
 
    > **Note**: The app runs in the background, so you are free to close the terminal window if you want to.
 
-2. Press and hold the hotkey combination `Option + Shift-Left` (or `Alt + Shift-Left` on Windows) to start recording your voice.
+2. Press and hold the hotkey combination `Option + Shift-Left` (or `Alt + Shift-Left` on Windows/Linux) to start recording your voice.
 
 3. Release the hotkey to transcribe your speech and automatically copy the text to your clipboard.
 
