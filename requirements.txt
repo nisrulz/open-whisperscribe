@@ -5,3 +5,5 @@ pynput
 pyperclip
 pyautogui
 openai-whisper
+Pillow
+pyyaml

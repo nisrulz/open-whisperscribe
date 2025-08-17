@@ -2,3 +2,6 @@
 build
 nohup.out
 *.wav
+dist
+logs.txt
+__pycache__
