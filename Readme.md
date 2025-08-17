@@ -2,6 +2,8 @@
 
 > Transcribe. Paste. Done. Let your voice do the typing.
 
+![Banner](./assets/github_banner.jpg)
+
 ## Highlights
 
 🎙️ Speak Naturally: Converts your voice into text effortlessly using advanced Whisper speech recognition.
