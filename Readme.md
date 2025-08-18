@@ -71,7 +71,10 @@ To stop the application, run:
 ./stop.sh
 ```
 
-<video src="./assets/demo.mp4" controls autoplay></video>
+
+https://github.com/user-attachments/assets/a8d6d672-941a-417a-8082-91ed4e726320
+
+
 
 ### Configure
 
