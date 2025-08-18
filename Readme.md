@@ -122,6 +122,7 @@ This project makes use of the following:
 - [numpy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [scipy](https://scipy.org/): A library for mathematics, science, and engineering.
 - [pyyaml](https://pyyaml.org/): A YAML parser and emitter for Python.
+- [Logo Icon](https://www.svgrepo.com/svg/404638/mic-microphone-record-sound): From SVG Repo.
 
 ## License
 
