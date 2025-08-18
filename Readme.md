@@ -33,7 +33,7 @@
 1. Open your terminal and clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/open-whisperscribe.git
+   git clone https://github.com/nisrulz/open-whisperscribe.git
    cd open-whisperscribe
    ```
 
@@ -109,12 +109,6 @@ After making changes, restart the application for the updates to take effect, by
 ./run.sh
 ```
 
-## License
-
-This project is licensed under the Apache License 2.0.
-
-See the [LICENSE.txt](./LICENSE.txt) file for the full license text.
-
 ## Credits
 
 This project makes use of the following:
@@ -128,3 +122,9 @@ This project makes use of the following:
 - [numpy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [scipy](https://scipy.org/): A library for mathematics, science, and engineering.
 - [pyyaml](https://pyyaml.org/): A YAML parser and emitter for Python.
+
+## License
+
+This project is licensed under the Apache License 2.0.
+
+See the [LICENSE.txt](./LICENSE.txt) file for the full license text.
