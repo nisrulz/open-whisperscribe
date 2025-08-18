@@ -6,4 +6,4 @@ hotkey:
   debounce_time_ms: 1000  # milliseconds
 
 whisper:
-  model: base
+  model: base  # Possible values: tiny, base, small, medium, large

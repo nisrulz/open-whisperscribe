@@ -101,6 +101,11 @@ You can customize the application by modifying the `config.yaml` file located in
 
    - Use `keyboard.Key` and then type `.` for autocompletion and to avoid errors.
 
+4. **Whisper Model**:
+
+   - `model`: Specify the Whisper model to use. Possible values are `tiny`, `base`, `small`, `medium`, and `large`.
+   - The model is downloaded and cached automatically when you run the application for the first time. Subsequent runs will use the cached model.
+
 After making changes, restart the application for the updates to take effect, by running
 
 ```bash
