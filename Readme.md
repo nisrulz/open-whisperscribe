@@ -71,6 +71,8 @@ To stop the application, run:
 ./stop.sh
 ```
 
+<video src="./assets/demo.mp4" controls autoplay></video>
+
 ### Configure
 
 You can customize the application by modifying the `config.yaml` file located in the root directory of the project. Below are some common configurations you can change:
