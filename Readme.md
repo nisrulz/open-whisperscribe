@@ -2,23 +2,23 @@
 
 > Transcribe. Paste. Done. Let your voice do the typing.
 
-![Banner](./assets/github_banner.jpg)
+![Banner](./assets/banner.jpg)
 
 ## Highlights
 
-🎙️ **Speak Naturally**: Converts your voice into text effortlessly using advanced Whisper speech recognition.
+- 🎙️ **Speak Naturally**: Converts your voice into text effortlessly using advanced Whisper speech recognition.
 
-⚡ **Instant Transcription**: Transcribes spoken words in real time, ready to paste anywhere.
+- ⚡ **Instant Transcription**: Transcribes spoken words in real time, ready to paste anywhere.
 
-📋 **Clipboard Integration**: Automatically copies the transcribed text to your clipboard for quick use.
+- 📋 **Clipboard Integration**: Automatically copies the transcribed text to your clipboard for quick use.
 
-💼 **For Everyone**: Ideal for professionals, creatives, students, and anyone who wants to save typing time.
+- 💼 **For Everyone**: Ideal for professionals, creatives, students, and anyone who wants to save typing time.
 
-🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
+- 🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
 
-✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
+- ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
 
-🌙 **Runs in Background**: Operates quietly without interrupting your workflow or demanding attention.
+- 🌙 **Runs in Background**: Operates quietly without interrupting your workflow or demanding attention.
 
 ## Usage
 
@@ -37,26 +37,29 @@
    cd open-whisperscribe
    ```
 
-2. Run the setup script to create a virtual environment and install dependencies:
+2. Run the setup script to create a virtual environment, install dependencies and provide permissions:
 
    ```bash
    ./setup.sh
    ```
 
-#### Enabling Permissions on macOS
+   > The script will open up the required System Settings page as shown below and wait for you to enable access. You will then need to go back to terminal to proceed to next permission.
+   > ![Permission Accept Wait](./assets/sc_5.png)
 
-To use Open WhisperScribe on macOS, you need to grant the following permissions to your Terminal app:
+   #### Enabling Permissions on macOS
 
-> **Note**: Navigate to System Settings in macOS and then to "Privacy and Security." You need admin rights to modify these settings.
+   To use Open WhisperScribe on macOS, you need to grant the following permissions to your Terminal app:
 
-1. **Accessibility**: Allow your Terminal app to control your computer.
-   ![Accessibility](./assets/sc_1.png)
+   > **Note**: You need admin rights to modify these settings.
 
-2. **Microphone**: Grant access to record audio.
-   ![Microphone](./assets/sc_2.png)
+   1. **Accessibility**: Allow your Terminal app to control your computer.
+      ![Accessibility](./assets/sc_2.png)
 
-3. **Input Monitoring**: Enable monitoring of keyboard input.
-   ![Input Monitoring](./assets/sc_3.png)
+   2. **Microphone**: Grant access to record audio.
+      ![Microphone](./assets/sc_3.png)
+
+   3. **Input Monitoring**: Enable monitoring of keyboard input.
+      ![Input Monitoring](./assets/sc_4.png)
 
 ### Running the Application
 
@@ -65,6 +68,10 @@ To use Open WhisperScribe on macOS, you need to grant the following permissions 
    ```bash
    ./run.sh
    ```
+
+   ![GUI](./assets/sc_1.png)
+
+   Once the GUI has loaded up, simply click "Start" and you are ready to use the Hot Key anywhere on your machine 🚀
 
    > **Note**:
    > The app runs in the background, so you are free to close the terminal window if you want to.
@@ -80,13 +87,23 @@ To use Open WhisperScribe on macOS, you need to grant the following permissions 
 
 ### Stopping the Application
 
-To stop the application, run:
+To stop the Hot Key detection, you can
 
-```bash
-./stop.sh
-```
+1. Press the button "Stop"
 
-https://github.com/user-attachments/assets/a8d6d672-941a-417a-8082-91ed4e726320
+   ![GUI quit from stop button](./assets/sc_6.png)
+
+2. Quit the GUI by clicking the "x" button on the top left corner.
+
+   ![GUI quit from x](./assets/sc_7.png)
+
+3. Lastly, you simply run the below script. It searches for the right process and kills it.
+
+   ```bash
+   ./stop.sh
+   ```
+
+<https://github.com/user-attachments/assets/a8d6d672-941a-417a-8082-91ed4e726320>
 
 ### Configure
 
