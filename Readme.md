@@ -53,10 +53,10 @@ To use Open WhisperScribe on macOS, you need to grant the following permissions 
    ![Accessibility](./assets/sc_1.png)
 
 2. **Microphone**: Grant access to record audio.
-   ![Microphone](./assets/sc_1.png)
+   ![Microphone](./assets/sc_2.png)
 
 3. **Input Monitoring**: Enable monitoring of keyboard input.
-   ![Input Monitoring](./assets/sc_1.png)
+   ![Input Monitoring](./assets/sc_3.png)
 
 ### Running the Application
 
