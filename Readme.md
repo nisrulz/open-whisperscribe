@@ -43,6 +43,21 @@
    ./setup.sh
    ```
 
+#### Enabling Permissions on macOS
+
+To use Open WhisperScribe on macOS, you need to grant the following permissions to your Terminal app:
+
+> **Note**: Navigate to System Settings in macOS and then to "Privacy and Security." You need admin rights to modify these settings.
+
+1. **Accessibility**: Allow your Terminal app to control your computer.
+   ![Accessibility](./assets/sc_1.png)
+
+2. **Microphone**: Grant access to record audio.
+   ![Microphone](./assets/sc_1.png)
+
+3. **Input Monitoring**: Enable monitoring of keyboard input.
+   ![Input Monitoring](./assets/sc_1.png)
+
 ### Running the Application
 
 1. Start the application:
