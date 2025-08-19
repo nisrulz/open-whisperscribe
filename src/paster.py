@@ -13,3 +13,4 @@ def paste_text(text):
         print("Pasted transcription.")
     except Exception as e:
         print("Failed to paste text.")
+        print(e.str())

@@ -16,6 +16,7 @@ def on_press(key):
                 start_recording()
     except Exception as e:
         print("Error in on_press.")
+        print(e.str())
 
 def on_release(key):
     global transcription_triggered
@@ -35,4 +36,5 @@ def on_release(key):
                 threading.Timer(DEBOUNCE_TIME, reset_flag).start()
     except Exception as e:
         print("Error in on_release.")
+        print(e.str())
 

@@ -19,4 +19,5 @@ def transcribe_with_whisper():
         return text
     except Exception as e:
         print("Transcription error.")
+        print(e.str())
         return ""

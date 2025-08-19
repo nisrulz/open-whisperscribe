@@ -40,6 +40,7 @@ def start_recording():
                     recorded_frames.append(indata.copy())
             except Exception as e:
                 print("Error in audio callback.")
+                print(e.str())
 
         stream = sd.InputStream(
             samplerate=SAMPLE_RATE,
@@ -52,6 +53,7 @@ def start_recording():
         print("Recording... (Hold hotkey)")
     except Exception as e:
         print("Failed to start recording.")
+        print(e.str())
         is_recording = False
 
 def stop_recording_and_save():
@@ -73,6 +75,7 @@ def stop_recording_and_save():
             print("No audio captured.")
     except Exception as e:
         print("Failed to stop recording and save.")
+        print(e.str())
         
         
 def get_is_recording():
