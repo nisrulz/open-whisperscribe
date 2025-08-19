@@ -2,30 +2,27 @@
 
 > Transcribe. Paste. Done. Let your voice do the typing.
 
-![Banner](./assets/github_banner.jpg)
+Open WhisperScribe is a lightweight and efficient tool that converts your voice into text using advanced OpenAI Whisper model's speech recognition. Designed for professionals, creatives, and students, it streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
+
+![Banner](./assets/banner.jpg)
 
 ## Highlights
 
-🎙️ **Speak Naturally**: Converts your voice into text effortlessly using advanced Whisper speech recognition.
-
-⚡ **Instant Transcription**: Transcribes spoken words in real time, ready to paste anywhere.
-
-📋 **Clipboard Integration**: Automatically copies the transcribed text to your clipboard for quick use.
-
-💼 **For Everyone**: Ideal for professionals, creatives, students, and anyone who wants to save typing time.
-
-🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
-
-✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
-
-🌙 **Runs in Background**: Operates quietly without interrupting your workflow or demanding attention.
+- 🎙️ **Speak Naturally**: Converts your voice into text effortlessly using advanced Whisper speech recognition.
+- ⚡ **Instant Transcription**: Transcribes spoken words in real time, ready to paste anywhere.
+- 📋 **Clipboard Integration**: Automatically copies the transcribed text to your clipboard for quick use.
+- 💼 **For Everyone**: Ideal for anyone who wants to save typing time.
+- 🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
+- ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication.
+- 🌙 **Runs in Background**: Operates quietly without interrupting your workflow.
 
 ## Usage
 
 ### Prerequisites
 
-- Python 3.8 or higher installed on your system.
-- `pip` package manager.
+- [Python 3.8 or higher](https://www.python.org/) installed on your system.
+- [`pip` package manager](https://pip.pypa.io/en/stable/).
+- [`brew` package manager](https://brew.sh/).
 - Tested on macOS, but it should also work on Windows and Linux since it is written in Python.
 
 ### Setup
@@ -37,26 +34,29 @@
    cd open-whisperscribe
    ```
 
-2. Run the setup script to create a virtual environment and install dependencies:
+2. Run the setup script to create a virtual environment, install dependencies, and configure permissions:
 
    ```bash
    ./setup.sh
    ```
 
-#### Enabling Permissions on macOS
+   > The script will guide you through enabling the required permissions on macOS. Follow the on-screen instructions to proceed.
+   > ![Permission Accept Wait](./assets/sc_5.png)
 
-To use Open WhisperScribe on macOS, you need to grant the following permissions to your Terminal app:
+   #### Enabling Permissions on macOS
 
-> **Note**: Navigate to System Settings in macOS and then to "Privacy and Security." You need admin rights to modify these settings.
+    To use Open WhisperScribe on macOS, grant the following permissions to your Terminal app:
 
-1. **Accessibility**: Allow your Terminal app to control your computer.
-   ![Accessibility](./assets/sc_1.png)
+   > **Note**: You need admin rights to modify these settings.
 
-2. **Microphone**: Grant access to record audio.
-   ![Microphone](./assets/sc_2.png)
+   1. **Accessibility**: Allow your Terminal app to control your computer.
+      ![Accessibility](./assets/sc_2.png)
 
-3. **Input Monitoring**: Enable monitoring of keyboard input.
-   ![Input Monitoring](./assets/sc_3.png)
+   2. **Microphone**: Grant access to record audio.
+      ![Microphone](./assets/sc_3.png)
+
+   3. **Input Monitoring**: Enable monitoring of keyboard input.
+      ![Input Monitoring](./assets/sc_4.png)
 
 ### Running the Application
 
@@ -66,9 +66,9 @@ To use Open WhisperScribe on macOS, you need to grant the following permissions 
    ./run.sh
    ```
 
-   > **Note**:
-   > The app runs in the background, so you are free to close the terminal window if you want to.
-   > When you run this script it will first stop all running instances of Open WhisperScribe and then start a fresh new instance.
+   ![GUI](./assets/sc_1.png)
+
+   Once the GUI loads, click "Start" to activate the hotkey functionality.
 
 2. Place your cursor inside the application or text field where you want the transcribed text to appear.
 
@@ -80,17 +80,25 @@ To use Open WhisperScribe on macOS, you need to grant the following permissions 
 
 ### Stopping the Application
 
-To stop the application, run:
+To stop the application, you can:
 
-```bash
-./stop.sh
-```
+1. Press the "Stop" button in the GUI.
 
-https://github.com/user-attachments/assets/a8d6d672-941a-417a-8082-91ed4e726320
+   ![GUI quit from stop button](./assets/sc_6.png)
+
+2. Quit the GUI by clicking the "x" button on the top left corner.
+
+   ![GUI quit from x](./assets/sc_7.png)
+
+3. Run the following script to stop all running instances:
+
+   ```bash
+   ./stop.sh
+   ```
 
 ### Configure
 
-You can customize the application by modifying the `config.yaml` file located in the root directory of the project. Below are some common configurations you can change:
+Customize the application by modifying the `config.yaml` file located in the root directory. Below are some common configurations:
 
 1. **Audio Settings**:
 
@@ -100,12 +108,10 @@ You can customize the application by modifying the `config.yaml` file located in
 2. **Logs**:
 
    - Logs are written to the `nohup.out` file by default when the application is run in the background using `./run.sh`.
-     You can check this file for debugging or runtime information.
 
 3. **Hotkey Combination**:
 
-   - The hotkey combination is defined in `src/hotkey_combination.py` for better usability and autocompletion support inside the code editor.
-   - To change the hotkey, open `src/hotkey_combination.py` and modify the `HOTKEY_COMBINATION` variable. For example:
+   - The hotkey combination is defined in `src/hotkey_combination.py`. To change it, modify the `HOTKEY_COMBINATION` variable. For example:
 
      ```python
      HOTKEY_COMBINATION = {keyboard.Key.ctrl, keyboard.Key.space}
@@ -116,9 +122,9 @@ You can customize the application by modifying the `config.yaml` file located in
 4. **Whisper Model**:
 
    - `model`: Specify the Whisper model to use. Possible values are `tiny`, `base`, `small`, `medium`, and `large`.
-   - The model is downloaded and cached automatically when you run the application for the first time. Subsequent runs will use the cached model.
+   - The model is downloaded and cached automatically when you run the application for the first time.
 
-After making changes, restart the application for the updates to take effect, by running
+After making changes, restart the application for the updates to take effect:
 
 ```bash
 ./run.sh
@@ -136,7 +142,9 @@ This project makes use of the following:
 - [sounddevice](https://python-sounddevice.readthedocs.io/): A library for recording and playing back audio in real time.
 - [numpy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [scipy](https://scipy.org/): A library for mathematics, science, and engineering.
+- [pillow](https://python-pillow.org/): A library for image processing in Python.
 - [pyyaml](https://pyyaml.org/): A YAML parser and emitter for Python.
+- [python-tk](https://wiki.python.org/moin/TkInter): A GUI toolkit for building graphical user interfaces in Python.
 - [Logo Icon](https://www.svgrepo.com/svg/404638/mic-microphone-record-sound): From SVG Repo.
 
 ## License
