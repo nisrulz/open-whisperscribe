@@ -31,10 +31,18 @@ echo "====================================================================="
 echo "Installing project dependencies from requirements.txt..."
 pip install -r requirements.txt
 
-# Trigger microphone permission prompt
-python3 -c "from src.audio_recorder import trigger_mic_permission; trigger_mic_permission()"
+# Check if python-tk is already installed
+if ! python3 -c "import tkinter" &> /dev/null; then
+  echo "Installing python-tk..."
+  brew install python-tk
+else
+  echo "python-tk is already installed."
+fi
 
-# Accessibility Permission
+# Check if microphone permission is already granted
+python3 src/check_mic_permission.py
+
+# Check for Accessibility permission
 echo ""
 echo "====================================================================="
 echo "Please enable Accessibility permissions for your Terminal app:"
@@ -45,7 +53,8 @@ open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibil
 echo "Press Enter once you have granted Accessibility permissions."
 read -p "Press Enter to continue..."
 
-# Input Monitoring Permission
+
+# Check for Input Monitoring permission
 echo ""
 echo "====================================================================="
 echo "Please enable Input Monitoring permissions for your Terminal app:"
@@ -56,7 +65,7 @@ open "x-apple.systempreferences:com.apple.preference.security?Privacy_ListenEven
 echo "Press Enter once you have granted Input Monitoring permissions."
 read -p "Press Enter to continue..."
 
-# Microphone Permission
+# Check for Microphone permission
 echo ""
 echo "====================================================================="
 echo "Please enable Microphone permissions for your Terminal app:"
