@@ -16,6 +16,10 @@ Open WhisperScribe is a lightweight and efficient tool that converts your voice 
 - ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication.
 - 🌙 **Runs in Background**: Operates quietly without interrupting your workflow.
 
+## Demo
+
+https://github.com/user-attachments/assets/0eed09df-5bbb-414a-9d69-c8edc59afe70
+
 ## Usage
 
 ### Prerequisites
