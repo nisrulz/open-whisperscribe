@@ -80,3 +80,15 @@ def stop_recording_and_save():
         
 def get_is_recording():
     return is_recording
+
+def trigger_mic_permission(duration=1, sample_rate=44100, channels=1):
+    """
+    Triggers macOS microphone permission prompt by recording a short audio snippet.
+    """
+    try:
+        print("Accessing microphone...")
+        sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=channels)
+        sd.wait()
+        print("Microphone access triggered.")
+    except Exception as e:
+        print(f"Error accessing microphone: {e}")
