@@ -2,30 +2,27 @@
 
 > Transcribe. Paste. Done. Let your voice do the typing.
 
+Open WhisperScribe is a lightweight and efficient tool that converts your voice into text using advanced OpenAI Whisper model's speech recognition. Designed for professionals, creatives, and students, it streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
+
 ![Banner](./assets/banner.jpg)
 
 ## Highlights
 
 - 🎙️ **Speak Naturally**: Converts your voice into text effortlessly using advanced Whisper speech recognition.
-
 - ⚡ **Instant Transcription**: Transcribes spoken words in real time, ready to paste anywhere.
-
 - 📋 **Clipboard Integration**: Automatically copies the transcribed text to your clipboard for quick use.
-
-- 💼 **For Everyone**: Ideal for professionals, creatives, students, and anyone who wants to save typing time.
-
+- 💼 **For Everyone**: Ideal for anyone who wants to save typing time.
 - 🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
-
-- ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication by bridging speech and text seamlessly.
-
-- 🌙 **Runs in Background**: Operates quietly without interrupting your workflow or demanding attention.
+- ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication.
+- 🌙 **Runs in Background**: Operates quietly without interrupting your workflow.
 
 ## Usage
 
 ### Prerequisites
 
-- Python 3.8 or higher installed on your system.
-- `pip` package manager.
+- [Python 3.8 or higher](https://www.python.org/) installed on your system.
+- [`pip` package manager](https://pip.pypa.io/en/stable/).
+- [`brew` package manager](https://brew.sh/).
 - Tested on macOS, but it should also work on Windows and Linux since it is written in Python.
 
 ### Setup
@@ -37,18 +34,18 @@
    cd open-whisperscribe
    ```
 
-2. Run the setup script to create a virtual environment, install dependencies and provide permissions:
+2. Run the setup script to create a virtual environment, install dependencies, and configure permissions:
 
    ```bash
    ./setup.sh
    ```
 
-   > The script will open up the required System Settings page as shown below and wait for you to enable access. You will then need to go back to terminal to proceed to next permission.
+   > The script will guide you through enabling the required permissions on macOS. Follow the on-screen instructions to proceed.
    > ![Permission Accept Wait](./assets/sc_5.png)
 
    #### Enabling Permissions on macOS
 
-   To use Open WhisperScribe on macOS, you need to grant the following permissions to your Terminal app:
+    To use Open WhisperScribe on macOS, grant the following permissions to your Terminal app:
 
    > **Note**: You need admin rights to modify these settings.
 
@@ -71,11 +68,7 @@
 
    ![GUI](./assets/sc_1.png)
 
-   Once the GUI has loaded up, simply click "Start" and you are ready to use the Hot Key anywhere on your machine 🚀
-
-   > **Note**:
-   > The app runs in the background, so you are free to close the terminal window if you want to.
-   > When you run this script it will first stop all running instances of Open WhisperScribe and then start a fresh new instance.
+   Once the GUI loads, click "Start" to activate the hotkey functionality.
 
 2. Place your cursor inside the application or text field where you want the transcribed text to appear.
 
@@ -87,9 +80,9 @@
 
 ### Stopping the Application
 
-To stop the Hot Key detection, you can
+To stop the application, you can:
 
-1. Press the button "Stop"
+1. Press the "Stop" button in the GUI.
 
    ![GUI quit from stop button](./assets/sc_6.png)
 
@@ -97,17 +90,15 @@ To stop the Hot Key detection, you can
 
    ![GUI quit from x](./assets/sc_7.png)
 
-3. Lastly, you simply run the below script. It searches for the right process and kills it.
+3. Run the following script to stop all running instances:
 
    ```bash
    ./stop.sh
    ```
 
-<https://github.com/user-attachments/assets/a8d6d672-941a-417a-8082-91ed4e726320>
-
 ### Configure
 
-You can customize the application by modifying the `config.yaml` file located in the root directory of the project. Below are some common configurations you can change:
+Customize the application by modifying the `config.yaml` file located in the root directory. Below are some common configurations:
 
 1. **Audio Settings**:
 
@@ -117,12 +108,10 @@ You can customize the application by modifying the `config.yaml` file located in
 2. **Logs**:
 
    - Logs are written to the `nohup.out` file by default when the application is run in the background using `./run.sh`.
-     You can check this file for debugging or runtime information.
 
 3. **Hotkey Combination**:
 
-   - The hotkey combination is defined in `src/hotkey_combination.py` for better usability and autocompletion support inside the code editor.
-   - To change the hotkey, open `src/hotkey_combination.py` and modify the `HOTKEY_COMBINATION` variable. For example:
+   - The hotkey combination is defined in `src/hotkey_combination.py`. To change it, modify the `HOTKEY_COMBINATION` variable. For example:
 
      ```python
      HOTKEY_COMBINATION = {keyboard.Key.ctrl, keyboard.Key.space}
@@ -133,9 +122,9 @@ You can customize the application by modifying the `config.yaml` file located in
 4. **Whisper Model**:
 
    - `model`: Specify the Whisper model to use. Possible values are `tiny`, `base`, `small`, `medium`, and `large`.
-   - The model is downloaded and cached automatically when you run the application for the first time. Subsequent runs will use the cached model.
+   - The model is downloaded and cached automatically when you run the application for the first time.
 
-After making changes, restart the application for the updates to take effect, by running
+After making changes, restart the application for the updates to take effect:
 
 ```bash
 ./run.sh
@@ -153,7 +142,9 @@ This project makes use of the following:
 - [sounddevice](https://python-sounddevice.readthedocs.io/): A library for recording and playing back audio in real time.
 - [numpy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [scipy](https://scipy.org/): A library for mathematics, science, and engineering.
+- [pillow](https://python-pillow.org/): A library for image processing in Python.
 - [pyyaml](https://pyyaml.org/): A YAML parser and emitter for Python.
+- [python-tk](https://wiki.python.org/moin/TkInter): A GUI toolkit for building graphical user interfaces in Python.
 - [Logo Icon](https://www.svgrepo.com/svg/404638/mic-microphone-record-sound): From SVG Repo.
 
 ## License
