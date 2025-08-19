@@ -12,6 +12,12 @@ FOREGROUND_COLOR = "white"  # White
 # Define font
 DEFAULT_FONT = ("TkDefaultFont", 20)
 
+# Banner Image
+BANNER_IMAGE_PATH = "assets/banner.jpg"
+
+# Logo Image
+LOGO_IMAGE_PATH = "assets/logo.png"
+
 # Function to run shell scripts
 def run_script(script_name):
     try:
@@ -62,13 +68,13 @@ root.resizable(False, False)
 root.configure(bg=BACKGROUND_COLOR)
 root.protocol("WM_DELETE_WINDOW", on_exit)  # Handle window close
 
-icon = tk.PhotoImage(file="assets/logo.png")
+icon = tk.PhotoImage(file=LOGO_IMAGE_PATH)
 root.iconphoto(False, icon)
 
 # Load banner image using PIL
 try:
     # Load image
-    image = Image.open("assets/github_banner.jpg")
+    image = Image.open(BANNER_IMAGE_PATH)
 
     # Get window width (match your root.geometry width)
     target_width = 600  # or use root.winfo_width() after root.update()
