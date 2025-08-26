@@ -39,6 +39,14 @@ else
   echo "python-tk is already installed."
 fi
 
+# Check if ffmpeg is already installed
+if ! command -v ffmpeg &> /dev/null; then
+  echo "Installing ffmpeg..."
+  brew install ffmpeg
+else
+  echo "ffmpeg is already installed."
+fi
+
 # Check if microphone permission is already granted
 python3 src/check_mic_permission.py
 
