@@ -18,7 +18,7 @@ Open WhisperScribe is a lightweight and efficient tool that converts your voice 
 
 ## Demo
 
-<https://github.com/user-attachments/assets/0eed09df-5bbb-414a-9d69-c8edc59afe70>
+https://github.com/user-attachments/assets/0eed09df-5bbb-414a-9d69-c8edc59afe70
 
 ## Instructions
 
