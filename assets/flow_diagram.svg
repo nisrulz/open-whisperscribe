@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="948" viewBox="0 0 180.4 711.4">
+  <g class="graph">
+    <path fill="#fff" d="M0 711V0h180v711H0z"/>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M125 4H38c-6 0-12 6-12 12v12c0 6 6 12 12 12h87c6 0 12-6 12-12V16c0-6-6-12-12-12"/>
+      <text x="77.5" y="-681.8" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">User Launches App</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M109 77H54c-6 0-12 6-12 12v12c0 6 6 12 12 12h55c6 0 12-6 12-12V89c0-6-6-12-12-12"/>
+      <text x="77.5" y="-615.6" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">GUI (gui.py)</text>
+      <text x="77.5" y="-601.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Tkinter</text>
+    </g>
+    <g stroke="#000" class="edge">
+      <path fill="none" d="M81 40v25"/>
+      <path d="m85 65-4 10-3-10h7z"/>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M147 166H16c-6 0-12 6-12 12v27c0 6 6 12 12 12h131c6 0 12-6 12-12v-27c0-6-6-12-12-12"/>
+      <text x="77.5" y="-526" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Hotkey Listener</text>
+      <text x="77.5" y="-511.6" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">(src/hotkey_combination.py)</text>
+      <text x="77.5" y="-497.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">pynput</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 114v41"/>
+      <path stroke="#000" d="m85 154-4 10-3-10h7z"/>
+      <text x="123.4" y="-563" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">Wait for Hotkey</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M143 270H20c-6 0-12 6-12 12v27c0 6 6 12 12 12h123c6 0 12-6 12-12v-27c0-6-6-12-12-12"/>
+      <text x="77.5" y="-422" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Record Audio</text>
+      <text x="77.5" y="-407.6" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">(src/audio_recorder.py)</text>
+      <text x="77.5" y="-393.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">sounddevice, numpy, scipy</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 218v40"/>
+      <path stroke="#000" d="m85 258-4 10-3-10h7z"/>
+      <text x="124.9" y="-459" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">On Hotkey Press</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M145 374H18c-6 0-12 6-12 12v27c0 6 6 12 12 12h127c6 0 12-6 12-12v-27c0-6-6-12-12-12"/>
+      <text x="77.5" y="-318" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Transcribe with Whisper</text>
+      <text x="77.5" y="-303.6" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">(src/whisper_transcriber.py)</text>
+      <text x="77.5" y="-289.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">openai-whisper</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 322v40"/>
+      <path stroke="#000" d="m85 362-4 10-3-10h7z"/>
+      <text x="110.3" y="-355" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">Save Audio</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M144 478H19c-6 0-12 6-12 12v27c0 6 6 12 12 12h125c6 0 12-6 12-12v-27c0-6-6-12-12-12"/>
+      <text x="77.5" y="-214" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Copy to Clipboard</text>
+      <text x="77.5" y="-199.6" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">(src/clipboard_manager.py)</text>
+      <text x="77.5" y="-185.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">pyperclip</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 426v40"/>
+      <path stroke="#000" d="m85 466-4 10-3-10h7z"/>
+      <text x="107.4" y="-251" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">Transcribe</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M143 582H20c-6 0-12 6-12 12v12c0 6 6 12 12 12h123c6 0 12-6 12-12v-12c0-6-6-12-12-12"/>
+      <text x="77.5" y="-103.2" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Auto Paste in Focused App</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 530v41"/>
+      <path stroke="#000" d="m85 570-4 10-3-10h7z"/>
+      <text x="92.7" y="-147" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">Copy</text>
+    </g>
+    <g class="node">
+      <path fill="none" stroke="#000" d="M140 671H23c-6 0-12 6-12 12v12c0 6 6 12 12 12h117c6 0 12-6 12-12v-12c0-6-6-12-12-12"/>
+      <text x="77.5" y="-14.4" font-family="Times,serif" font-size="12" text-anchor="middle" transform="translate(4 707)">Transcribed Text Appears</text>
+    </g>
+    <g class="edge">
+      <path fill="none" stroke="#000" d="M81 618v41"/>
+      <path stroke="#000" d="m85 659-4 10-3-10h7z"/>
+      <text x="92.3" y="-58.2" font-family="Times,serif" font-size="14" text-anchor="middle" transform="translate(4 707)">Paste</text>
+    </g>
+  </g>
+</svg>

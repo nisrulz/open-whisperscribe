@@ -1,0 +1,21 @@
+digraph OpenWhisperScribe {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontsize=12];
+
+    Start [label="User Launches App"];
+    GUI [label="GUI (gui.py)\nTkinter"];
+    Hotkey [label="Hotkey Listener\n(src/hotkey_combination.py)\npynput"];
+    Record [label="Record Audio\n(src/audio_recorder.py)\nsounddevice, numpy, scipy"];
+    Whisper [label="Transcribe with Whisper\n(src/whisper_transcriber.py)\nopenai-whisper"];
+    Clipboard [label="Copy to Clipboard\n(src/clipboard_manager.py)\npyperclip"];
+    Paste [label="Auto Paste in Focused App"];
+    End [label="Transcribed Text Appears"];
+
+    Start -> GUI;
+    GUI -> Hotkey [label="Wait for Hotkey"];
+    Hotkey -> Record [label="On Hotkey Press"];
+    Record -> Whisper [label="Save Audio"];
+    Whisper -> Clipboard [label="Transcribe"];
+    Clipboard -> Paste [label="Copy"];
+    Paste -> End [label="Paste"];
+}
