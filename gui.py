@@ -66,7 +66,7 @@ signal.signal(signal.SIGINT, handle_sigint)
 # Initialize main window
 root = tk.Tk()
 root.title("Open WhisperScribe")
-root.geometry("600x520")
+root.geometry("600x600")
 root.resizable(False, False)
 root.configure(bg=BACKGROUND_COLOR)
 root.protocol("WM_DELETE_WINDOW", on_exit)  # Handle window close
@@ -132,7 +132,35 @@ hotkey_text = f"Press {format_hotkey_combination(HOTKEY_COMBINATION)} to speak, 
 
 # Add hotkey label to the GUI
 hotkey_label = tk.Label(root, text=hotkey_text, bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
-hotkey_label.pack(pady=(5, 20))
+hotkey_label.pack(pady=(10, 10), padx=20)
+
+log_file_label = tk.Label(
+    root,
+    text="Log File: nohup.out",
+    bg=BACKGROUND_COLOR,
+    fg="lightgray",
+    font=("TkDefaultFont", 12),
+    cursor="hand2"
+)
+log_file_label.pack(side="bottom", pady=(10, 20), padx=20)
+log_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "nohup.out"]))
+
+
+# Add labels for file paths
+output_file_label = tk.Label(
+    root,
+    text="Temp Output File: output.wav",
+    bg=BACKGROUND_COLOR,
+    fg="lightgray",
+    font=("TkDefaultFont", 12),
+    cursor="hand2"
+)
+output_file_label.pack(side="bottom", pady=(10, 10), padx=20)
+output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "output.wav"]))
+
+# Update label colors to light blue
+output_file_label.config(fg="lightblue")
+log_file_label.config(fg="lightblue")
 
 
 # Run the application
