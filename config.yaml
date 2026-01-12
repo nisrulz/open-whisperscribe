@@ -1,6 +1,6 @@
 audio:
   sample_rate: 16000
-  audio_file: output.wav
+  audio_file: output
 
 hotkey:
   debounce_time_ms: 1000  # milliseconds

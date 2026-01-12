@@ -1,9 +1,0 @@
-sounddevice
-numpy
-scipy
-pynput
-pyperclip
-pyautogui
-openai-whisper
-pillow
-pyyaml

@@ -7,6 +7,7 @@ import signal
 import platform
 from src.hotkey_combination import HOTKEY_COMBINATION
 from pynput import keyboard
+from src.constants import AUDIO_FILE
 
 # Define colors
 BACKGROUND_COLOR = "black"  # Black
@@ -149,18 +150,14 @@ log_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "nohup
 # Add labels for file paths
 output_file_label = tk.Label(
     root,
-    text="Temp Output File: output.wav",
+    text=f"Temp Output File: {AUDIO_FILE}",
     bg=BACKGROUND_COLOR,
-    fg="lightgray",
+    fg="lightblue",
     font=("TkDefaultFont", 12),
     cursor="hand2"
 )
 output_file_label.pack(side="bottom", pady=(10, 10), padx=20)
-output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "output.wav"]))
-
-# Update label colors to light blue
-output_file_label.config(fg="lightblue")
-log_file_label.config(fg="lightblue")
+output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", AUDIO_FILE]))
 
 
 # Run the application

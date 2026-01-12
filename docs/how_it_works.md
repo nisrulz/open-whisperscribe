@@ -14,7 +14,7 @@
 Open-WhisperScribe is a **local-only application**, meaning all processing happens on your device. No data is sent to external servers, ensuring complete privacy. Below are details about data retention:
 
 1. **Recordings**:
-   - Recorded audio is saved as the name of the file defined in `config.yaml` under the `audio_file` key (default is `output.wav`) in the root directory of the application.
+   - Recorded audio is saved as the base name defined in `config.yaml` under the `audio_file` key with the `.wav` extension automatically appended (default is `output.wav`) in the root directory of the application.
    - This file is overwritten each time a new recording is made.
    - If you wish to retain a recording, make a copy of the file before starting a new recording.
 

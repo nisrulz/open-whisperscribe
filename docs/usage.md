@@ -45,7 +45,7 @@ Customize the application by modifying the `config.yaml` file located in the roo
 1. **Audio Settings**:
 
    - `sample_rate`: Audio sample rate in Hz. Default is `16000` (16kHz), which is optimal for Whisper as the model internally resamples all audio to 16kHz. Using this rate avoids unnecessary resampling and provides the best balance between quality and performance.
-   - `audio_file`: Specify the name of the file where recorded audio will be saved.
+   - `audio_file`: Specify the base name of the file (without extension) where recorded audio will be saved. The `.wav` extension is automatically appended.
 
 2. **Logs**:
 
