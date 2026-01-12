@@ -1,3 +1,5 @@
+
+from src.logger import logger
 import sounddevice as sd
 
 def is_mic_permission_granted():
@@ -9,7 +11,7 @@ def is_mic_permission_granted():
         with sd.InputStream():
             return True
     except Exception as e:
-        print(f"Microphone permission not granted: {e}")
+        logger.error(f"Microphone permission not granted: {e}")
         return False
 
 def trigger_mic_permission(duration=1, sample_rate=44100, channels=1):
@@ -17,12 +19,12 @@ def trigger_mic_permission(duration=1, sample_rate=44100, channels=1):
     Triggers macOS microphone permission prompt by recording a short audio snippet.
     """
     try:
-        print("Accessing microphone...")
+        logger.info("Accessing microphone...")
         sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=channels)
         sd.wait()
-        print("Microphone access triggered.")
+        logger.info("Microphone access triggered.")
     except Exception as e:
-        print(f"Error accessing microphone: {e}")
+        logger.error(f"Error accessing microphone: {e}")
 
 def main():
     if not is_mic_permission_granted():

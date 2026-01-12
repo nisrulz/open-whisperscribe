@@ -1,16 +1,17 @@
 import pyperclip
 import pyautogui
 import time
+from src.logger import logger
 
 def paste_text(text):
     try:
         if not text:
-            print("No text to paste.")
+            logger.warning("No text to paste.")
             return
         pyperclip.copy(text)
         time.sleep(0.2)
         pyautogui.hotkey('command', 'v')
-        print("Pasted transcription.")
+        logger.success("Pasted transcription.")
     except Exception as e:
-        print("Failed to paste text.")
-        print(e.str())
+        logger.error("Failed to paste text.")
+        logger.error(str(e))

@@ -1,6 +1,7 @@
 import sounddevice as sd
 import numpy as np
 import scipy.io.wavfile
+from src.logger import logger
 from src.constants import SAMPLE_RATE, CHANNELS, DEVICE_INDEX, AUDIO_FILE
 
 recorded_frames = []
@@ -24,14 +25,14 @@ def start_recording():
     global is_recording, stream, recorded_frames
     try:
         if is_recording:
-            print("Recording already in progress.")
+            logger.warning("Recording already in progress.")
             return
         is_recording = True
         recorded_frames = []
 
         def callback(indata, frames, time_info, status):
             if status:
-                print(f"Warning: Recording status: {status}")
+                logger.warning(f"Recording status: {status}")
             try:
                 if indata.shape[1] > 1:
                     mono_data = indata.mean(axis=1, keepdims=True).astype(indata.dtype)
@@ -39,8 +40,8 @@ def start_recording():
                 else:
                     recorded_frames.append(indata.copy())
             except Exception as e:
-                print("Error in audio callback.")
-                print(e.str())
+                logger.error("Error in audio callback.")
+                logger.error(str(e))
 
         stream = sd.InputStream(
             samplerate=SAMPLE_RATE,
@@ -50,17 +51,17 @@ def start_recording():
             callback=callback
         )
         stream.start()
-        print("Recording... (Hold hotkey)")
+        logger.info("Recording... (Hold hotkey)")
     except Exception as e:
-        print("Failed to start recording.")
-        print(e.str())
+        logger.error("Failed to start recording.")
+        logger.error(str(e))
         is_recording = False
 
 def stop_recording_and_save():
     global is_recording, stream, recorded_frames
     try:
         if not is_recording:
-            print("No active recording to stop.")
+            logger.warning("No active recording to stop.")
             return
         is_recording = False
         if stream:
@@ -70,12 +71,12 @@ def stop_recording_and_save():
         if recorded_frames:
             audio_np = np.concatenate(recorded_frames, axis=0)
             scipy.io.wavfile.write(AUDIO_FILE, SAMPLE_RATE, audio_np)
-            print("Stopped recording. Audio saved.")
+            logger.success("Stopped recording. Audio saved.")
         else:
-            print("No audio captured.")
+            logger.warning("No audio captured.")
     except Exception as e:
-        print("Failed to stop recording and save.")
-        print(e.str())
+        logger.error("Failed to stop recording and save.")
+        logger.error(str(e))
         
         
 def get_is_recording():
