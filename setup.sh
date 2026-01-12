@@ -19,8 +19,8 @@ echo ""
 echo "====================================================================="
 echo "Checking if virtual environment exists..."
 if [ ! -d ".venv" ]; then
-  echo "Virtual environment not found. Creating one..."
-  uv venv
+  echo "Virtual environment not found. Creating one with Python 3.10+..."
+  uv venv --python 3.10
 else
   echo "Virtual environment already exists."
 fi

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [Python 3.8 or higher](https://www.python.org/) installed on your system.
+- [Python 3.10 or higher](https://www.python.org/) installed on your system.
 - [`uv` package manager](https://docs.astral.sh/uv/) - A fast Python package installer and resolver (automatically installed by setup script if not present).
 - [`brew` package manager](https://brew.sh/) - Required for macOS system dependencies.
 - Tested on macOS, but it should also work on Windows and Linux since it is written in Python.

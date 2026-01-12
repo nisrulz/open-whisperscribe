@@ -3,7 +3,7 @@ name = "open-whisperscribe"
 version = "1.0.0"
 description = "Transcribe. Paste. Done. Let your voice do the typing."
 readme = "Readme.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 authors = [
     { name = "Nishant Srivastava", email = "nisrulz@gmail.com" }
@@ -15,7 +15,7 @@ dependencies = [
     "pynput",
     "pyperclip",
     "pyautogui",
-    "openai-whisper",
+    "faster-whisper",
     "pillow",
     "pyyaml",
 ]
