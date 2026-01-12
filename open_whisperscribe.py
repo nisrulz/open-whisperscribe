@@ -1,3 +1,7 @@
+# Configure as background app on macOS (must be done before GUI imports)
+from src.macos_background import configure_background_app
+configure_background_app()
+
 from pynput import keyboard
 import atexit
 from src.hotkey_handler import on_press, on_release
