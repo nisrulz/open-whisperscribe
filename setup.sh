@@ -2,34 +2,34 @@
 # Exit on any error and treat unset variables as an error
 set -eu
 
+# Check if uv is installed
+echo ""
+echo "====================================================================="
+echo "Checking if uv is installed..."
+if ! command -v uv &> /dev/null; then
+  echo "uv not found. Installing uv..."
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  export PATH="$HOME/.cargo/bin:$PATH"
+else
+  echo "uv is already installed."
+fi
+
 # Create virtual environment if it doesn't exist
 echo ""
 echo "====================================================================="
 echo "Checking if virtual environment exists..."
-if [ ! -d "venv" ]; then
+if [ ! -d ".venv" ]; then
   echo "Virtual environment not found. Creating one..."
-  python3 -m venv venv
+  uv venv
 else
   echo "Virtual environment already exists."
 fi
 
-# Activate virtual environment
-echo ""
-echo "====================================================================="
-echo "Activating the virtual environment..."
-source venv/bin/activate
-
-# Upgrade pip
-echo ""
-echo "====================================================================="
-echo "Upgrading pip to the latest version..."
-pip install --upgrade pip
-
 # Install project dependencies
 echo ""
 echo "====================================================================="
-echo "Installing project dependencies from requirements.txt..."
-pip install -r requirements.txt
+echo "Installing project dependencies..."
+uv sync
 
 # Check if python-tk is already installed
 if ! python3 -c "import tkinter" &> /dev/null; then
@@ -48,7 +48,7 @@ else
 fi
 
 # Check if microphone permission is already granted
-python3 src/check_mic_permission.py
+uv run src/check_mic_permission.py
 
 # Check for Accessibility permission
 echo ""
