@@ -15,6 +15,7 @@ Open WhisperScribe is a lightweight and efficient tool that converts your voice 
 - 🛠️ **Lightweight CLI Tool**: Easy to install and run from the command line without distractions.
 - ✍️ **Boost Productivity**: Streamlines note-taking, writing, and communication.
 - 🌙 **Runs in Background**: Operates quietly without interrupting your workflow.
+- ⚡ **Modern Package Management**: Uses `uv` for fast and reliable dependency management.
 
 ## Demo
 

@@ -1,0 +1,25 @@
+[project]
+name = "open-whisperscribe"
+version = "1.0.0"
+description = "Transcribe. Paste. Done. Let your voice do the typing."
+readme = "Readme.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Nishant Srivastava", email = "nisrulz@gmail.com" }
+]
+dependencies = [
+    "sounddevice",
+    "numpy",
+    "scipy",
+    "pynput",
+    "pyperclip",
+    "pyautogui",
+    "faster-whisper",
+    "pillow",
+    "pyyaml",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -3,10 +3,11 @@
 This project makes use of the following:
 
 - [Whisper Model by OpenAI](https://openai.com/research/whisper): A state-of-the-art speech recognition model.
+- [faster-whisper](https://github.com/SYSTRAN/faster-whisper): A reimplementation of OpenAI's Whisper model using CTranslate2, which is faster and more memory-efficient.
+- [uv](https://docs.astral.sh/uv/): An extremely fast Python package installer and resolver, written in Rust.
 - [pynput](https://pynput.readthedocs.io/en/latest/): A library for controlling and monitoring input devices.
 - [pyperclip](https://github.com/asweigart/pyperclip): A cross-platform Python module for clipboard operations.
 - [pyautogui](https://pyautogui.readthedocs.io/en/latest/): A library for programmatically controlling the mouse and keyboard.
-- [openai-whisper](https://github.com/openai/whisper): The official Python package for the Whisper model.
 - [sounddevice](https://python-sounddevice.readthedocs.io/): A library for recording and playing back audio in real time.
 - [numpy](https://numpy.org/): A fundamental package for scientific computing with Python.
 - [scipy](https://scipy.org/): A library for mathematics, science, and engineering.

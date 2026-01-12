@@ -1,17 +1,18 @@
-import whisper
+from faster_whisper import WhisperModel
 from src.constants import MODEL_NAME, AUDIO_FILE
 import warnings
 
 # Suppress Whisper Warnings
-warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
+warnings.filterwarnings("ignore", category=UserWarning)
 
-model = whisper.load_model(MODEL_NAME)
+# Initialize faster-whisper model (uses CPU by default, can be set to "cuda" for GPU)
+model = WhisperModel(MODEL_NAME, device="cpu", compute_type="int8")
 
 def transcribe_with_whisper():
     print("Transcribing with Whisper...")
     try:
-        result = model.transcribe(AUDIO_FILE)
-        text = result.get("text", "").strip()
+        segments, info = model.transcribe(AUDIO_FILE, beam_size=5)
+        text = " ".join([segment.text for segment in segments]).strip()
         if not text:
             print("Warning: transcription text is empty.")
         else:
@@ -19,5 +20,5 @@ def transcribe_with_whisper():
         return text
     except Exception as e:
         print("Transcription error.")
-        print(e.str())
+        print(str(e))
         return ""

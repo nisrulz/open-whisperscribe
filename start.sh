@@ -3,7 +3,7 @@
 set -eu
 
 echo "Starting Open-WhisperScribe in the background..."
-nohup python3 -u open_whisperscribe.py &
+nohup uv run open_whisperscribe.py &
 
 echo ""
 echo "Open-WhisperScribe script is now running in the background."

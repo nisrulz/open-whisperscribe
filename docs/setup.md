@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-- [Python 3.8 or higher](https://www.python.org/) installed on your system.
-- [`pip` package manager](https://pip.pypa.io/en/stable/).
-- [`brew` package manager](https://brew.sh/).
+- [Python 3.10 or higher](https://www.python.org/) installed on your system.
+- [`uv` package manager](https://docs.astral.sh/uv/) - A fast Python package installer and resolver (automatically installed by setup script if not present).
+- [`brew` package manager](https://brew.sh/) - Required for macOS system dependencies.
 - Tested on macOS, but it should also work on Windows and Linux since it is written in Python.
 
 ## Setup
@@ -16,13 +16,13 @@
    cd open-whisperscribe
    ```
 
-2. Run the setup script to create a virtual environment, install dependencies, and configure permissions:
+2. Run the setup script to install `uv` (if needed), create a virtual environment, install dependencies, and configure permissions:
 
    ```bash
    ./setup.sh
    ```
 
-   > The script will guide you through enabling the required permissions on macOS. Follow the on-screen instructions to proceed.
+   > The script will automatically install `uv` if it's not already present, then use it to manage dependencies efficiently. You'll be guided through enabling the required permissions on macOS. Follow the on-screen instructions to proceed.
    > ![Permission Accept Wait](../assets/sc_5.png)
 
 ### Enabling Permissions on macOS
