@@ -13,6 +13,7 @@ import os
 # Define colors
 BACKGROUND_COLOR = "black"  # Black
 FOREGROUND_COLOR = "white"  # White
+CLICK_TO_ACTIVATE_COLOR = "purple"  # Purple
 
 # Define font
 DEFAULT_FONT = ("TkDefaultFont", 20)
@@ -37,10 +38,10 @@ def toggle():
         toggle_label.config(text="Starting", fg="orange")
         toggle_label.update_idletasks()  # Force update to show "Starting"
         run_script("start.sh")
-        toggle_label.config(text="Active, Click to Stop", fg="red")
+        toggle_label.config(text="Active, Click to Stop", fg="orange")
         is_running = True
     else:
-        toggle_label.config(text="Stopping", fg="orange")
+        toggle_label.config(text="Stopping...", fg="orange")
         toggle_label.unbind("<Button-1>")  # Disable click
         threading.Thread(target=stop_sequence).start()
 
@@ -50,7 +51,7 @@ def stop_sequence():
 
 def finalize_stop():
     global is_running
-    toggle_label.config(text="Click to Activate", fg="green")
+    toggle_label.config(text="Click to Activate", fg=CLICK_TO_ACTIVATE_COLOR)
     toggle_label.bind("<Button-1>", lambda e: toggle())  # Re-enable click
     is_running = False
 
@@ -106,7 +107,7 @@ is_running = False
 toggle_label = tk.Label(
     root,
     text="Click to Activate",
-    fg="green",
+    fg=CLICK_TO_ACTIVATE_COLOR,
     bg=BACKGROUND_COLOR,
     font=DEFAULT_FONT,
     cursor="hand2"
@@ -134,8 +135,8 @@ hotkey_frame.pack(pady=(5, 5), padx=20)  # Reduced vertical padding
 sentence_label = tk.Label(hotkey_frame, text="Press ", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
 sentence_label.pack(side="left")
 
-# Add the hotkey part with magenta background
-hotkey_label = tk.Label(hotkey_frame, text=format_hotkey_combination(HOTKEY_COMBINATION), bg="magenta", fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+# Add the hotkey part with purple background
+hotkey_label = tk.Label(hotkey_frame, text=format_hotkey_combination(HOTKEY_COMBINATION), bg="purple", fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
 hotkey_label.pack(side="left")
 
 # Add the rest of the sentence with black background
@@ -146,7 +147,7 @@ log_file_label = tk.Label(
     root,
     text="Log File: nohup.out",
     bg=BACKGROUND_COLOR,
-    fg="lightgray",
+    fg="lightblue",
     font=("TkDefaultFont", 12),
     cursor="hand2"
 )
@@ -165,14 +166,6 @@ output_file_label = tk.Label(
 )
 output_file_label.pack(side="bottom", pady=(5, 5), padx=20)
 output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", os.path.abspath(AUDIO_FILE)]))
-
-
-# Ensure consistent vertical padding for all labels
-sentence_label.pack_configure(pady=5)
-hotkey_label.pack_configure(pady=5)
-rest_label.pack_configure(pady=5)
-log_file_label.pack_configure(pady=5)
-output_file_label.pack_configure(pady=5)
 
 # Run the application
 root.mainloop()
