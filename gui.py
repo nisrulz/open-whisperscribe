@@ -70,7 +70,7 @@ signal.signal(signal.SIGINT, handle_sigint)
 # Initialize main window
 root = tk.Tk()
 root.title("Open WhisperScribe")
-root.geometry("600x600")
+root.geometry("600x520")
 root.resizable(False, False)
 root.configure(bg=BACKGROUND_COLOR)
 root.protocol("WM_DELETE_WINDOW", on_exit)  # Handle window close
