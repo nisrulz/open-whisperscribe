@@ -4,6 +4,9 @@ import subprocess
 import sys
 import threading
 import signal
+import platform
+from src.hotkey_combination import HOTKEY_COMBINATION
+from pynput import keyboard
 
 # Define colors
 BACKGROUND_COLOR = "black"  # Black
@@ -63,7 +66,7 @@ signal.signal(signal.SIGINT, handle_sigint)
 # Initialize main window
 root = tk.Tk()
 root.title("Open WhisperScribe")
-root.geometry("600x480")
+root.geometry("600x520")
 root.resizable(False, False)
 root.configure(bg=BACKGROUND_COLOR)
 root.protocol("WM_DELETE_WINDOW", on_exit)  # Handle window close
@@ -111,6 +114,25 @@ toggle_button = tk.Button(
     relief="raised",
     bd=0)
 toggle_button.pack(pady=20)
+
+# Update key mapping to use pynput.keyboard.Key
+def format_hotkey_combination(hotkey_combination):
+    key_mapping = {
+        keyboard.Key.alt: "⌥ Option" if platform.system() == "Darwin" else "Alt",
+        keyboard.Key.shift_l: "⇧ Shift",
+        keyboard.Key.ctrl: "⌃ Ctrl",
+        keyboard.Key.cmd: "⌘ Command",
+        keyboard.Key.space: "Space",
+        keyboard.Key.enter: "Enter",
+    }
+    return " + ".join(key_mapping.get(key, key.name if hasattr(key, 'name') else str(key)) for key in hotkey_combination)
+
+# Format the hotkey combination
+hotkey_text = f"Press {format_hotkey_combination(HOTKEY_COMBINATION)} to speak, release to copy and paste."
+
+# Add hotkey label to the GUI
+hotkey_label = tk.Label(root, text=hotkey_text, bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+hotkey_label.pack(pady=(5, 20))
 
 
 # Run the application
