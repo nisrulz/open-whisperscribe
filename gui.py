@@ -7,10 +7,13 @@ import signal
 import platform
 from src.hotkey_combination import HOTKEY_COMBINATION
 from pynput import keyboard
+from src.constants import AUDIO_FILE
+import os
 
 # Define colors
 BACKGROUND_COLOR = "black"  # Black
 FOREGROUND_COLOR = "white"  # White
+CLICK_TO_ACTIVATE_COLOR = "purple"  # Purple
 
 # Define font
 DEFAULT_FONT = ("TkDefaultFont", 20)
@@ -32,13 +35,14 @@ def run_script(script_name):
 def toggle():
     global is_running
     if not is_running:
+        toggle_label.config(text="Starting", fg="orange")
+        toggle_label.update_idletasks()  # Force update to show "Starting"
         run_script("start.sh")
-        toggle_button.config(text="Stop")
-        status_label.config(text="Status: Running")
+        toggle_label.config(text="Active, Click to Stop", fg="orange")
         is_running = True
     else:
-        status_label.config(text="Status: Stopping...")
-        toggle_button.config(state="disabled")
+        toggle_label.config(text="Stopping...", fg="orange")
+        toggle_label.unbind("<Button-1>")  # Disable click
         threading.Thread(target=stop_sequence).start()
 
 def stop_sequence():
@@ -47,8 +51,8 @@ def stop_sequence():
 
 def finalize_stop():
     global is_running
-    toggle_button.config(text="Start", state="normal")
-    status_label.config(text="Status: Stopped")
+    toggle_label.config(text="Click to Activate", fg=CLICK_TO_ACTIVATE_COLOR)
+    toggle_label.bind("<Button-1>", lambda e: toggle())  # Re-enable click
     is_running = False
 
 def on_exit():
@@ -98,22 +102,18 @@ except Exception as e:
     banner_label = tk.Label(root, text="Banner Image Not Found", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=DEFAULT_FONT)
     banner_label.pack(side="top", anchor="n", pady=0)
 
-# Status label
-status_label = tk.Label(root, text="Status: Stopped", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=DEFAULT_FONT)
-status_label.pack(pady=(10, 5))
-
-# Create toggle button
+# Create the clickable label
 is_running = False
-toggle_button = tk.Button(
-    root, 
-    text="Start", 
-    command=toggle,
+toggle_label = tk.Label(
+    root,
+    text="Click to Activate",
+    fg=CLICK_TO_ACTIVATE_COLOR,
+    bg=BACKGROUND_COLOR,
     font=DEFAULT_FONT,
-    bg=FOREGROUND_COLOR,
-    fg=BACKGROUND_COLOR,
-    relief="raised",
-    bd=0)
-toggle_button.pack(pady=20)
+    cursor="hand2"
+)
+toggle_label.pack(pady=20)
+toggle_label.bind("<Button-1>", lambda e: toggle())
 
 # Update key mapping to use pynput.keyboard.Key
 def format_hotkey_combination(hotkey_combination):
@@ -127,13 +127,45 @@ def format_hotkey_combination(hotkey_combination):
     }
     return " + ".join(key_mapping.get(key, key.name if hasattr(key, 'name') else str(key)) for key in hotkey_combination)
 
-# Format the hotkey combination
-hotkey_text = f"Press {format_hotkey_combination(HOTKEY_COMBINATION)} to speak, release to copy and paste."
+# Split the hotkey text into parts with different background colors
+hotkey_frame = tk.Frame(root, bg=BACKGROUND_COLOR)
+hotkey_frame.pack(pady=(5, 5), padx=20)  # Reduced vertical padding
 
-# Add hotkey label to the GUI
-hotkey_label = tk.Label(root, text=hotkey_text, bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
-hotkey_label.pack(pady=(5, 20))
+# Add the sentence part with black background
+sentence_label = tk.Label(hotkey_frame, text="Press ", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+sentence_label.pack(side="left")
 
+# Add the hotkey part with purple background
+hotkey_label = tk.Label(hotkey_frame, text=format_hotkey_combination(HOTKEY_COMBINATION), bg="purple", fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+hotkey_label.pack(side="left")
+
+# Add the rest of the sentence with black background
+rest_label = tk.Label(hotkey_frame, text=", release to copy and paste.", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+rest_label.pack(side="left")
+
+log_file_label = tk.Label(
+    root,
+    text="Log File: nohup.out",
+    bg=BACKGROUND_COLOR,
+    fg="lightblue",
+    font=("TkDefaultFont", 12),
+    cursor="hand2"
+)
+log_file_label.pack(side="bottom", pady=(5, 5), padx=20)
+log_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "nohup.out"]))
+
+
+# Add labels for file paths
+output_file_label = tk.Label(
+    root,
+    text=f"Temp Output File: {AUDIO_FILE}",
+    bg=BACKGROUND_COLOR,
+    fg="lightblue",
+    font=("TkDefaultFont", 12),
+    cursor="hand2"
+)
+output_file_label.pack(side="bottom", pady=(5, 5), padx=20)
+output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", os.path.abspath(AUDIO_FILE)]))
 
 # Run the application
 root.mainloop()

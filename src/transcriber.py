@@ -1,4 +1,5 @@
 from faster_whisper import WhisperModel
+from src.logger import logger
 from src.constants import MODEL_NAME, AUDIO_FILE
 import warnings
 
@@ -9,16 +10,16 @@ warnings.filterwarnings("ignore", category=UserWarning)
 model = WhisperModel(MODEL_NAME, device="cpu", compute_type="int8")
 
 def transcribe_with_whisper():
-    print("Transcribing with Whisper...")
+    logger.info("Transcribing with Whisper...")
     try:
         segments, info = model.transcribe(AUDIO_FILE, beam_size=5)
         text = " ".join([segment.text for segment in segments]).strip()
         if not text:
-            print("Warning: transcription text is empty.")
+            logger.warning("Transcription text is empty.")
         else:
-            print(f"Transcription complete: {text}")
+            logger.success(f"Transcription complete: {text}")
         return text
     except Exception as e:
-        print("Transcription error.")
-        print(str(e))
+        logger.error("Transcription error.")
+        logger.error(str(e))
         return ""
