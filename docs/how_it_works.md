@@ -8,3 +8,17 @@
 6. The tool automatically pastes the copied transcribed text at the currently focused app window where the cursor is.
 
 ![Flow Diagram](../assets/flow_diagram.svg)
+
+## Privacy and Data Retention
+
+Open-WhisperScribe is a **local-only application**, meaning all processing happens on your device. No data is sent to external servers, ensuring complete privacy. Below are details about data retention:
+
+1. **Recordings**:
+   - Recorded audio is saved as the name of the file defined in `config.yaml` under the `audio_file` key (default is `output.wav`) in the root directory of the application.
+   - This file is overwritten each time a new recording is made.
+   - If you wish to retain a recording, make a copy of the file before starting a new recording.
+
+2. **Logs**:
+   - Logs are written to the `nohup.out` file in the root directory.
+   - This file contains information about the application's runtime behavior and is useful for debugging.
+   - You can delete this file at any time without affecting the application's functionality.
