@@ -8,6 +8,7 @@ import platform
 from src.hotkey_combination import HOTKEY_COMBINATION
 from pynput import keyboard
 from src.constants import AUDIO_FILE
+import os
 
 # Define colors
 BACKGROUND_COLOR = "black"  # Black
@@ -125,12 +126,21 @@ def format_hotkey_combination(hotkey_combination):
     }
     return " + ".join(key_mapping.get(key, key.name if hasattr(key, 'name') else str(key)) for key in hotkey_combination)
 
-# Format the hotkey combination
-hotkey_text = f"Press {format_hotkey_combination(HOTKEY_COMBINATION)} to speak, release to copy and paste."
+# Split the hotkey text into parts with different background colors
+hotkey_frame = tk.Frame(root, bg=BACKGROUND_COLOR)
+hotkey_frame.pack(pady=(5, 5), padx=20)  # Reduced vertical padding
 
-# Add hotkey label to the GUI
-hotkey_label = tk.Label(root, text=hotkey_text, bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
-hotkey_label.pack(pady=(10, 10), padx=20)
+# Add the sentence part with black background
+sentence_label = tk.Label(hotkey_frame, text="Press ", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+sentence_label.pack(side="left")
+
+# Add the hotkey part with magenta background
+hotkey_label = tk.Label(hotkey_frame, text=format_hotkey_combination(HOTKEY_COMBINATION), bg="magenta", fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+hotkey_label.pack(side="left")
+
+# Add the rest of the sentence with black background
+rest_label = tk.Label(hotkey_frame, text=", release to copy and paste.", bg=BACKGROUND_COLOR, fg=FOREGROUND_COLOR, font=("TkDefaultFont", 14))
+rest_label.pack(side="left")
 
 log_file_label = tk.Label(
     root,
@@ -140,7 +150,7 @@ log_file_label = tk.Label(
     font=("TkDefaultFont", 12),
     cursor="hand2"
 )
-log_file_label.pack(side="bottom", pady=(10, 20), padx=20)
+log_file_label.pack(side="bottom", pady=(5, 5), padx=20)
 log_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", "nohup.out"]))
 
 
@@ -153,9 +163,16 @@ output_file_label = tk.Label(
     font=("TkDefaultFont", 12),
     cursor="hand2"
 )
-output_file_label.pack(side="bottom", pady=(10, 10), padx=20)
-output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", AUDIO_FILE]))
+output_file_label.pack(side="bottom", pady=(5, 5), padx=20)
+output_file_label.bind("<Button-1>", lambda e: subprocess.run(["open", "-R", os.path.abspath(AUDIO_FILE)]))
 
+
+# Ensure consistent vertical padding for all labels
+sentence_label.pack_configure(pady=5)
+hotkey_label.pack_configure(pady=5)
+rest_label.pack_configure(pady=5)
+log_file_label.pack_configure(pady=5)
+output_file_label.pack_configure(pady=5)
 
 # Run the application
 root.mainloop()
